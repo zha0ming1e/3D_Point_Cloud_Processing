@@ -48,12 +48,11 @@ There are two parts in this chapter:
 - Results
   - PCA 
   
-  
   1. **Principle Direction Estimation**: Estimate the **3 principle directions** of a point cloud 
     
   ![image](image/pca1.png) 
   
-  2. **Dimensionality Reduction**: Project the point cloud to the **first 2** principle directions (i.e. the **principle plane**) 
+  2. **Dimensionality Reduction**: Project the point cloud to the **first 2 principle directions** (i.e. the **principle plane**) 
     
   ![image](image/pca2.png) 
   
@@ -63,7 +62,6 @@ There are two parts in this chapter:
   
 
   - Voxel Grid Filter 
-  
   
   1. Original point cloud 
     
