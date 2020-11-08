@@ -48,6 +48,7 @@ There are two parts in this chapter:
 - Results
   - PCA 
   
+  
   1. **Principle Direction Estimation**: Estimate the **3 principle directions** of a point cloud 
     
   ![image](image/pca1.png) 
@@ -62,6 +63,7 @@ There are two parts in this chapter:
   
 
   - Voxel Grid Filter 
+  
   
   1. Original point cloud 
     
