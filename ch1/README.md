@@ -7,7 +7,7 @@ There are two parts in this chapter:
 ![image](image/pca_voxel.png)
 
 ## PCA: Principle Component Analysis
-- PCA is to find the dominant directions of the point cloud.
+- PCA is to find the **dominant directions** of the point cloud.
 - Applications:
   - Dimensionality Reduction
   - Surface Normal Estimation
