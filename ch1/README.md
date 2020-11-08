@@ -20,13 +20,9 @@ There are 2 parts in this chapter:
 
 - Kernel PCA
 
-
-
 ## Voxel Grid Filter (Downsampling)
 1. Build a voxel grid
 2. Select one point in each grid cell (Centroid/Random)
-
-
 
 ## Run
 - Prerequisites
