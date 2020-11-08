@@ -1,8 +1,8 @@
 # PCA and Voxel Grid Filter #
 
-There are 2 parts in this chapter:
-- PCA (Principle Component Analysis)
-- Voxel Grid Filter
+There are two parts in this chapter:
+- **PCA (Principle Component Analysis)**
+- **Voxel Grid Filter**
 
 ![image](image/pca_voxel.png)
 
@@ -24,14 +24,14 @@ There are 2 parts in this chapter:
 1. Build a voxel grid
 2. Select one point in each grid cell (Centroid/Random)
 
-## Run
+## Build and Run
 - Prerequisites
   - [**Eigen**](http://eigen.tuxfamily.org/): Linear algebra computing
   - [**PCL**](https://pointclouds.org/): Visualization
-- Build and run
+- Build & run
   - Build
   ```bash
-  git clone https://github.com/zha0ming1e/ 
+  git clone git@github.com:zha0ming1e/3D_Point_Cloud_Processing.git 
   cd 3D_Point_Cloud_Processing/ch1/ 
   mkdir build 
   cd build/ 
@@ -39,22 +39,26 @@ There are 2 parts in this chapter:
   make -j4 
   cd ../bin/   
   ```
-  Then, there are two executable file in **bin/** directory: **pca_pointcloud**, **vgf_pointcloud**
+  Then, there are two executable files in **bin/** directory: **pca_pointcloud** and **vgf_pointcloud**
   - Run
   ```bash
   ./pca_pointcloud ../data/POINT_CLOUD_DATA_FILE_TXT 
   ./vgf_pointcloud ../data/POINT_CLOUD_DATA_FILE_TXT 
   ```
 - Results
-  - PCA
-
-  ![image](image/pca1.png)
-  ![image](image/pca2.png)
+  - PCA 
+    1. **Principle Direction Estimation**: Estimate the **3 principle directions** of a point cloud 
+  ![image](image/pca1.png) 
+    2. **Dimensionality Reduction**: Project the point cloud to the **first 2** principle directions (i.e. the **principle plane**) 
+  ![image](image/pca2.png) 
+    3. **Surface Normal Estimation**: Estimate **surface normals** of each 3D point
   ![image](image/pca3.png)
 
-  - Voxel Grid Filter
-
-  ![image](image/vgf1.png)
-  ![image](image/vgf2.png)
+  - Voxel Grid Filter 
+    1. Original point cloud 
+  ![image](image/vgf1.png) 
+    2. Filted point cloud (downsampling) 
+  ![image](image/vgf2.png) 
+    3. Voxel Grid Filter Infomation 
   ![image](image/vgf3.png)
 
