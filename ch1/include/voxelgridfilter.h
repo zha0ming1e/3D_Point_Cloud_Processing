@@ -108,7 +108,7 @@ public:
             info += "\n==> Num of Filtered Point Cloud = " + std::to_string(FiltPCNum);
             info += "\n==> [ Filter Ratio = " + std::to_string((double) FiltPCNum / (double) OrigPCNum * 100.0) + " % ] \n";
         } else {
-            info += "\nOriginal or Filtered Point Cloud is empty. \n";
+            info += "\nWarning: Original or Filtered Point Cloud is empty. \n";
         }
 
         return info;

@@ -11,8 +11,8 @@ public:
 
     // constructor
     Point() = default;
-    Point(Vec3 position);
-    Point(Vec3 position, Vec3 normal);
+    Point(const Vec3 &position);
+    Point(const Vec3 &position, const Vec3 &normal);
 
     // function member
     // get 3D position

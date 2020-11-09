@@ -26,7 +26,7 @@ PCASolver::PCASolver(const PointCloud::Ptr &pointcloud) {
     dataVec2dataMat();
 
     // compute eigen values and vectors
-    auto dataMat = GetDataMat();
+    auto dataMat = dataMat_;
     auto covMat = dataMat * dataMat.transpose();
 
     Eigen::EigenSolver<MatX> eigenSolver(covMat);
@@ -39,7 +39,88 @@ PCASolver::PCASolver(const PointCloud::Ptr &pointcloud) {
     std::cout << "[ 2. Sort finished. ] " << std::endl;
 
     // finish initialization
-    std::cout << "[ 0. PCASolver: Initialization finished. ] "
+    std::cout << "[ 0. PCASolver: Initialization finished. ] \n"
+              << Info()
+              << ">>>>>>>> PCASolver <<<<<<<<" << std::endl;
+}
+
+PCASolver::PCASolver(const VecVectorXd &dataVec) {
+    // check
+    if (dataVec.empty()) {
+        std::cerr << "Error: Data vector is empty. " << std::endl;
+        return;
+    }
+    std::cout << "\n>>>>>>>> PCASolver <<<<<<<<"
+              << "\n[ 0. PCASolver: Initializing PCASolver... ] from [ Data Vector ]... " << std::endl;
+
+    // feed data
+    dataVec_ = dataVec;
+    data_number_ = dataVec_.size();
+    data_dim_ = dataVec_[0].rows();
+
+    // normalize
+    std::cout << "[ 1. PCASolver: Normalizing data of PCASolver... ] " << std::endl;
+    normalize();
+    std::cout << "[ 1. Normalization finished. ] " << std::endl;
+
+    // construct dataMat_
+    dataVec2dataMat();
+
+    // compute eigen values and vectors
+    auto covMat = dataMat_ * dataMat_.transpose();
+
+    Eigen::EigenSolver<MatX> eigenSolver(covMat);
+    eigen_values_ = eigenSolver.eigenvalues().real();
+    eigen_vectors_ = eigenSolver.eigenvectors().real();
+
+    // sort
+    std::cout << "[ 2. PCASolver: Sorting... ] " << std::endl;
+    sortByEigenValues();
+    std::cout << "[ 2. Sort finished. ] " << std::endl;
+
+    // finish initialization
+    std::cout << "[ 0. PCASolver: Initialization finished. ] \n"
+              << Info()
+              << ">>>>>>>> PCASolver <<<<<<<<" << std::endl;
+}
+
+PCASolver::PCASolver(const MatX &dataMat0) {
+    // check
+    if (!dataMat0.cols()) {
+        std::cerr << "Error: Data matrix is empty. " << std::endl;
+        return;
+    }
+    std::cout << "\n>>>>>>>> PCASolver <<<<<<<<"
+              << "\n[ 0. PCASolver: Initializing PCASolver... ] from [ Data Matrix ]... " << std::endl;
+
+    // feed data
+    dataMat_ = dataMat0;
+    data_number_ = dataMat_.cols();
+    data_dim_ = dataMat_.rows();
+
+    // construct dataVec_
+    dataMat2dataVec();
+
+    // normalize
+    std::cout << "[ 1. PCASolver: Normalizing data of PCASolver... ] " << std::endl;
+    normalize();
+    std::cout << "[ 1. Normalization finished. ] " << std::endl;
+
+    // compute eigen values and vectors
+    auto covMat = dataMat_ * dataMat_.transpose();
+
+    Eigen::EigenSolver<MatX> eigenSolver(covMat);
+    eigen_values_ = eigenSolver.eigenvalues().real();
+    eigen_vectors_ = eigenSolver.eigenvectors().real();
+
+    // sort
+    std::cout << "[ 2. PCASolver: Sorting... ] " << std::endl;
+    sortByEigenValues();
+    std::cout << "[ 2. Sort finished. ] " << std::endl;
+
+    // finish initialization
+    std::cout << "[ 0. PCASolver: Initialization finished. ] \n"
+              << Info()
               << "\n>>>>>>>> PCASolver <<<<<<<<" << std::endl;
 }
 
@@ -73,6 +154,15 @@ void PCASolver::dataVec2dataMat() {
     dataMat_ = dataMat;
 }
 
+void PCASolver::dataMat2dataVec() {
+    // convert VecVectorXd dataVec_ to MatX dataMat_
+    VecVectorXd dataVec = VecVectorXd(data_number_, VecX::Zero(data_dim_, 1));
+    for (int i = 0; i < data_number_; ++i) {
+        dataVec[i] = dataMat_.col(i);
+    }
+    dataVec_ = dataVec;
+}
+
 void PCASolver::sortByEigenValues() {
     VecX eigen_values_sorted = VecX::Zero(eigen_values_.rows(), 1);
     MatX eigen_vectors_sorted = MatX::Zero(eigen_vectors_.rows(), eigen_vectors_.cols());
@@ -81,12 +171,6 @@ void PCASolver::sortByEigenValues() {
     std::map<double, VecX, std::greater<double>> eigenValuesAndVectors;
     for (int i = 0; i < eigen_values_.size(); ++i)
         eigenValuesAndVectors.insert(std::make_pair((double) eigen_values_[i], eigen_vectors_.col(i)));
-
-//    // sorting
-//    std::sort(eigenValuesAndVectors.begin(), eigenValuesAndVectors.end(),
-//              [](const std::pair<double, VecX> &pair1, const std::pair<double, VecX> &pair2) -> bool {
-//                  return pair1.first > pair2.first;
-//              });
 
     int n = 0;
     for (auto &eigenValuesAndVector : eigenValuesAndVectors) {

@@ -13,6 +13,8 @@ public:
     // constructor
     PCASolver() = default;
     PCASolver(const PointCloud::Ptr &pointcloud);
+    PCASolver(const VecVectorXd &dataVec);
+    PCASolver(const MatX &dataMat0);
 
     // function member
     // get eigen values
@@ -56,11 +58,32 @@ public:
     // decoder: reconstruct vector from principle space
     VecX Decoder(const VecX &vec) const;
 
+    // output PCASolver Info
+    std::string Info() {
+        std::unique_lock<std::mutex> lck(data_mutex_);
+
+        std::string info = "\n[ PCASolver Info: ] ";
+        // output info
+        if (data_number_ && data_dim_) {
+            info += "\n==> Data Number = " + std::to_string(data_number_);
+            info += "\n==> Data Dimension = " + std::to_string(data_dim_);
+            info += "\n==> Eigen Values Number = " + std::to_string(eigen_values_.rows());
+            info += "\n==> Eigen Vectors Number = " + std::to_string(eigen_vectors_.cols())
+                    + " , Dimension = " + std::to_string(eigen_vectors_.rows()) + " \n";
+        } else {
+            info += "\nWarning: Data number or dimension is 0. \n";
+        }
+
+        return info;
+    }
+
 private:
     // normalize data by center (mean)
     void normalize();
     // convert VecVectorXd dataVec_ to MatX dataMat_
     void dataVec2dataMat();
+    // convert MatX dataMat_to VecVectorXd dataVec_
+    void dataMat2dataVec();
     // sort eigen vectors with eigen values
     void sortByEigenValues();
 

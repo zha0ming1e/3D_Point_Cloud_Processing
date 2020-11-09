@@ -68,7 +68,7 @@ void VoxelGridFilter::filter_algorithm(const std::map<long long, int> &index_and
             std::vector<int> sameId;
             sameId.push_back(iter->second);
 
-            iter0 = iter;
+            // iter0 = iter;
             while (++iter0 != index_and_id.end() && iter0->first == iter->first) {
                 ++iter;
                 sameId.push_back(iter->second);

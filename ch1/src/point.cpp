@@ -1,8 +1,8 @@
 #include "point.h"
 
-Point::Point(Vec3 position) : pos_(std::move(position)) {}
+Point::Point(const Vec3 &position) : pos_(position) {}
 
-Point::Point(Vec3 position, Vec3 normal) : pos_(std::move(position)), normal_(std::move(normal)) {}
+Point::Point(const Vec3 &position, const Vec3 &normal) : pos_(position), normal_(normal) {}
 
 Point::Ptr Point::CreateNewPoint() {
     Point::Ptr new_point(new Point);

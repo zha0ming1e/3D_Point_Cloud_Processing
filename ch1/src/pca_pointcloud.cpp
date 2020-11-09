@@ -99,7 +99,8 @@ void projToFirst2PrinVec(const PointCloud::Ptr &point_cloud_ptr,
     PtCloud::Ptr output(new PtCloud());
     // pcl point cloud
     auto all_points = point_cloud_ptr->GetAllPoints();
-    for (int i = 0; i < point_cloud_ptr->GetPointsNum(); ++i) {
+    auto all_points_num = point_cloud_ptr->GetPointsNum();
+    for (int i = 0; i < all_points_num; ++i) {
         auto projected_point_pos = pca_solver_ptr->Encoder(all_points[i]->GetPos());
 
         PointT point;

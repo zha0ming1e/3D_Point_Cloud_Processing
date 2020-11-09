@@ -6,7 +6,7 @@ PointCloud::PointCloud(const std::string &filename) {
     // clear the existing points
     Clear();
     // read points data from a txt file
-    from_file_txt(filename, false);
+    From_File_TXT(filename, false);
 
     std::cout << "[ PointCloud Initialization finished. ] " << std::endl;
 }
@@ -20,7 +20,7 @@ void PointCloud::InsertPoint(const Point::Ptr &point) {
     }
 }
 
-void PointCloud::from_file_txt(const std::string &filename, bool append) {
+void PointCloud::From_File_TXT(const std::string &filename, bool append) {
     // txt file: x,y,z,nx,ny,nz
     std::ifstream fin(filename);
     if (!fin) {
@@ -28,16 +28,15 @@ void PointCloud::from_file_txt(const std::string &filename, bool append) {
         return;
     }
 
+    if (!append)
+        Clear();  // clear the existing points
+
     double x, y, z, nx, ny, nz;
     char sep;
-    if (append) {
-        ;
-    } else {
-        while (fin >> x >> sep >> y >> sep >> z >> sep >> nx >> sep >> ny >> sep >> nz) {
-            Point::Ptr ptr(new Point(Vec3 (x, y, z), Vec3(nx, ny, nz)));
-            points_.push_back(ptr);
-            ++points_num_;
-        }
+    while (fin >> x >> sep >> y >> sep >> z >> sep >> nx >> sep >> ny >> sep >> nz) {
+        Point::Ptr ptr(new Point(Vec3 (x, y, z), Vec3(nx, ny, nz)));
+        points_.push_back(ptr);
+        ++points_num_;
     }
 
     std::cout << "[ PointCloud loaded. ] \n\\==> Total number of points from TXT file = " << points_num_ << std::endl;

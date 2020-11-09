@@ -18,7 +18,7 @@ public:
 
     // function member
     // read points from a txt file: append == false -> read data from a file, not append from a file
-    void from_file_txt(const std::string &filename, bool append=false);
+    void From_File_TXT(const std::string &filename, bool append=false);
 
     // get all points
     PointCloudType GetAllPoints() {
