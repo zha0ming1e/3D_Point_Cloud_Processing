@@ -7,22 +7,23 @@ There are two parts in this chapter:
 ![image](image/pca_voxel.png)
 
 ## PCA: Principle Component Analysis
-- PCA is to find the **dominant directions** of the point cloud.
-- Applications:
+- **PCA** is to find the **dominant directions** of the point cloud.
+- **Applications**:
   - Dimensionality Reduction
   - Surface Normal Estimation
   - Canonical Orientation
   - Keypoint Detection
   - Feature Description
-- Core Formula:
+- **Core Formula**:
 
 ![image](image/formula1.png)
 
-- Kernel PCA
+- **Encoder/Decoder**: Compress original vector (original information) from original space to principle space / Reconstruct information from principle space to original space 
+- **Kernel PCA** 
 
 ## Voxel Grid Filter (Downsampling)
-1. Build a voxel grid
-2. Select one point in each grid cell (Centroid/Random)
+1. **Voxel Grid**: Build a voxel grid
+2. **Point Selection**: Select one point in each grid cell (Centroid/Random)
 
 ## Build and Run
 - Prerequisites
@@ -44,15 +45,16 @@ There are two parts in this chapter:
   ```bash
   ./pca_pointcloud ../data/POINT_CLOUD_DATA_FILE_TXT 
   ./vgf_pointcloud ../data/POINT_CLOUD_DATA_FILE_TXT 
-  ```
-- Results
+  ``` 
+  
+## Results
   - PCA 
   
   1. **Principle Direction Estimation**: Estimate the **3 principle directions** of a point cloud 
     
   ![image](image/pca1.png) 
   
-  2. **Dimensionality Reduction**: Project the point cloud to the **first 2 principle directions** (i.e. the **principle plane**) 
+  2. **Dimensionality Reduction**: Project the point cloud to the **first 2 principle directions**, i.e. the **principle plane** (Encoder/Decoder) 
     
   ![image](image/pca2.png) 
   
@@ -61,13 +63,14 @@ There are two parts in this chapter:
   ![image](image/pca3.png) 
   
 
+
   - Voxel Grid Filter 
   
   1. Original point cloud 
     
   ![image](image/vgf1.png) 
   
-  2. Filted point cloud (downsampling) 
+  2. Filtered point cloud (downsampling) 
     
   ![image](image/vgf2.png) 
   
