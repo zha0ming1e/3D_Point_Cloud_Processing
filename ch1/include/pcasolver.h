@@ -60,8 +60,7 @@ public:
 
     // output PCASolver Info
     std::string Info() {
-        std::unique_lock<std::mutex> lck(data_mutex_);
-
+        //
         std::string info = "\n[ PCASolver Info: ] ";
         // output info
         if (data_number_ && data_dim_) {

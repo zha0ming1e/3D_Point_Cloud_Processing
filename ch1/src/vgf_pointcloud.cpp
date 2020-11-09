@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     // 1. centroid algo
     VoxelGridFilter::Ptr voxel_grid_filter_ptr(new VoxelGridFilter(point_cloud_ptr, Vec3({0.08, 0.08, 0.08}), VoxelGridFilter::ALGO::CENTROID));
     // 2. random algo
-    //VoxelGridFilter::Ptr voxel_grid_filter_ptr(new VoxelGridFilter(point_cloud_ptr, Vec3({0.08, 0.08, 0.08}), VoxelGridFilter::ALGO::RANDOM));
+    // VoxelGridFilter::Ptr voxel_grid_filter_ptr(new VoxelGridFilter(point_cloud_ptr, Vec3({0.08, 0.08, 0.08}), VoxelGridFilter::ALGO::RANDOM));
 
     // original point cloud
     auto origin_cloud_ptr = PointCloud2PCL(voxel_grid_filter_ptr->GetOriginPC());

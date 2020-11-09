@@ -50,8 +50,7 @@ public:
 
     // get algorithm in string
     std::string GetAlgoStr() {
-        std::unique_lock<std::mutex> lck(data_mutex_);
-
+        //
         std::string algo_str;
         if (algorithm_ == ALGO::CENTROID)
             algo_str = "Centroid";
@@ -63,8 +62,7 @@ public:
 
     // change voxel grid size
     void ChangeVoxelGridSize(const Vec3 &voxel_grid_size) {
-        std::unique_lock<std::mutex> lck(data_mutex_);
-
+        //
         std::cout << "[ VoxelGridFilter Changing Voxel Grid Size... ]" << std::endl;
 
         PointCloud::Ptr ptr(new PointCloud());
@@ -80,8 +78,7 @@ public:
 
     // change algorithm
     void ChangeAlgo(ALGO algorithm) {
-        std::unique_lock<std::mutex> lck(data_mutex_);
-
+        //
         std::cout << "[ VoxelGridFilter Changing Algorrithm... ]" << std::endl;
 
         PointCloud::Ptr ptr(new PointCloud());
@@ -97,13 +94,14 @@ public:
 
     // output VoxelGridFilter Info
     std::string Info() {
-        std::unique_lock<std::mutex> lck(data_mutex_);
-
+        //
         std::string info = "\n[ VoxelGridFilter Info: ] ";
         // output info of origin and filtered point cloud
         if (origin_pointcloud_ptr_ && filtered_pointcloud_ptr_) {
             auto OrigPCNum = origin_pointcloud_ptr_->GetPointsNum();
             auto FiltPCNum = filtered_pointcloud_ptr_->GetPointsNum();
+            std::string algo_str = GetAlgoStr();
+            info += "\n==> VoxelGridFilter Algorithm: " + algo_str;
             info += "\n==> Num of Original Point Cloud = " + std::to_string(OrigPCNum);
             info += "\n==> Num of Filtered Point Cloud = " + std::to_string(FiltPCNum);
             info += "\n==> [ Filter Ratio = " + std::to_string((double) FiltPCNum / (double) OrigPCNum * 100.0) + " % ] \n";

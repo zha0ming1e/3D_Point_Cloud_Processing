@@ -61,7 +61,7 @@ void VoxelGridFilter::filter_algorithm(const std::map<long long, int> &index_and
             filtered_pointcloud_ptr_->InsertPoint(pt_ptr);
         }
     } else if (algorithm_ == ALGO::RANDOM) {
-        srand(time(nullptr));
+        std::default_random_engine rng(time(nullptr));
 
         auto iter0 = index_and_id.begin();
         for (auto iter = index_and_id.begin(); iter != index_and_id.end(); ++iter) {
@@ -74,7 +74,8 @@ void VoxelGridFilter::filter_algorithm(const std::map<long long, int> &index_and
                 sameId.push_back(iter->second);
             }
 
-            int randomId = sameId[rand() % sameId.size()];
+            std::uniform_int_distribution<int> dist(0, sameId.size()-1);
+            int randomId = sameId[dist(rng)];
             Vec3 randPos = origin_pointcloud_ptr_->GetAllPoints()[randomId]->GetPos();
 
             Point::Ptr pt_ptr(new Point(randPos));
