@@ -12,9 +12,9 @@ public:
 
     // constructor
     PCASolver() = default;
-    PCASolver(const PointCloud::Ptr &pointcloud);
-    PCASolver(const VecVectorXd &dataVec);
-    PCASolver(const MatX &dataMat0);
+    explicit PCASolver(const PointCloud::Ptr &pointcloud);
+    explicit PCASolver(const VecVectorXd &dataVec);
+    explicit PCASolver(const MatX &dataMat0);
 
     // function member
     // get eigen values

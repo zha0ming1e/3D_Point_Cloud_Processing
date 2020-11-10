@@ -14,7 +14,7 @@ public:
 
     // constructor
     PointCloud() = default;
-    PointCloud(const std::string &filename);
+    explicit PointCloud(const std::string &filename);
 
     // function member
     // read points from a txt file: append == false -> read data from a file, not append from a file

@@ -11,7 +11,7 @@ public:
 
     // constructor
     Point() = default;
-    Point(const Vec3 &position);
+    explicit Point(const Vec3 &position);
     Point(const Vec3 &position, const Vec3 &normal);
 
     // function member
