@@ -51,5 +51,4 @@ private:
     PointCloudType points_;
     unsigned long points_num_ = 0;
 };
-
 #endif //PCP_MYPCASOLVER_POINTCLOUD_H
