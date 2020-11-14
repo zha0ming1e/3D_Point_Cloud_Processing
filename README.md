@@ -8,3 +8,4 @@
 
 ## Outline 
 - [**ch1**](./ch1/): PCA (Principle Component Analysis) and Voxel Grid Filter (Downsampling) 
+- [**ch2**](./ch2/): Binary Search Tree, Kd-tree, Octree 
