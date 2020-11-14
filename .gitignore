@@ -5,3 +5,11 @@ ch1/lib/
 ch1/cmake-build-release/
 ch1/.idea/ 
 
+# ch2 
+ch2/python/__pycache__/
+ch2/python/.idea/
+ch2/cpp/cmake-build-release/
+ch2/cpp/.idea/
+
+
+
