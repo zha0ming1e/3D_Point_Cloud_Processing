@@ -7,4 +7,4 @@
     - **Deep Learning Methods** 
 
 ## Outline 
-- [**ch1**](ch1): PCA (Principle Component Analysis) and Voxel Grid Filter (Downsampling) 
+- [**ch1**](./ch1/): PCA (Principle Component Analysis) and Voxel Grid Filter (Downsampling) 
