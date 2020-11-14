@@ -47,4 +47,13 @@ There are mainly three parts in this chapter:
   - Python 
     - The script `benchmark.py` contains 4 methods to search points with K-NN and Radius-NN: NumPy brute-force search, scipy.spatial.KDTree, Kd-tree , and Octree 
     - Data: `data/bin/000000.bin` is the point cloud data from [KITTI dataset](http://www.cvlibs.net/datasets/kitti/) 
-
+    - Run 
+    ```bash
+    cd 3D_Point_Cloud_Processing/ch2/python/ 
+    python benchmark.py 
+    ```
+## Results
+  - C++ 
+  - Python 
+    - Output 
+![image](image/result_python.png)
