@@ -1,13 +1,11 @@
 # Nearest Neighbors: Binary Search Tree, Kd-tree, Octree # 
 
-There are mainly three parts in this chapter:
+There are mainly three parts in this chapter (Key Idea: **Space Partition**): 
 - Nearest Neighbor (NN) Search Problem 
 - **Binary Search Tree**
 - **Kd-tree (K-dimensional tree)**
 - **Octree**
 ![image](image/trees.png) 
-
-## Key Idea: **Space Partition** 
 
 ## Nearest Neighbor (NN) Search Problem 
 - K-NN Search 
