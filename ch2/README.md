@@ -5,9 +5,11 @@ There are mainly three parts in this chapter:
 - **Binary Search Tree**
 - **Kd-tree (K-dimensional tree)**
 - **Octree**
-![image](image/trees.png)
+![image](image/trees.png) 
 
-## Nearest Neighbor (NN) Problem 
+## Key Idea: **Space Partition** 
+
+## Nearest Neighbor (NN) Search Problem 
 - K-NN Search 
 - Fixed Radius-NN Search 
 ![image](image/nnsearch.png)
