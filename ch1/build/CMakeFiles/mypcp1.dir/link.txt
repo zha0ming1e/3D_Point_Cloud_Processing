@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../lib/libmypcp1.a  CMakeFiles/mypcp1.dir/src/point.cpp.o CMakeFiles/mypcp1.dir/src/pointcloud.cpp.o CMakeFiles/mypcp1.dir/src/pcasolver.cpp.o CMakeFiles/mypcp1.dir/src/voxelgridfilter.cpp.o
-/usr/bin/ranlib ../lib/libmypcp1.a
