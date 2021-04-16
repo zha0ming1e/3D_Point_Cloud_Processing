@@ -1,0 +1,5 @@
+/home/parallels/learning/3D/Point_Cloud_Processing/github_3D_Point_Cloud_processing/ch1/build/CMakeFiles/edit_cache.dir
+/home/parallels/learning/3D/Point_Cloud_Processing/github_3D_Point_Cloud_processing/ch1/build/CMakeFiles/vgf_pointcloud.dir
+/home/parallels/learning/3D/Point_Cloud_Processing/github_3D_Point_Cloud_processing/ch1/build/CMakeFiles/mypcp1.dir
+/home/parallels/learning/3D/Point_Cloud_Processing/github_3D_Point_Cloud_processing/ch1/build/CMakeFiles/rebuild_cache.dir
+/home/parallels/learning/3D/Point_Cloud_Processing/github_3D_Point_Cloud_processing/ch1/build/CMakeFiles/pca_pointcloud.dir
