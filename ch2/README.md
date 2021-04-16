@@ -29,7 +29,7 @@ There are mainly three parts in this chapter (Key Idea: **Space Partition**):
 - Each node has 8 children 
 - Octree is more efficient because we can stop without going back to root 
 ![image](image/octree.png)
-    - e.g. this is a 3D octree-based map of [ICL NUIM dataset](https://www.doc.ic.ac.uk/~ahanda/VaFRIC/iclnuim.html)
+    - e.g. A 3D octree-based map of [ICL NUIM dataset](https://www.doc.ic.ac.uk/~ahanda/VaFRIC/iclnuim.html)
 ![image](image/octmap.png)
 
 ## Build and Run 
